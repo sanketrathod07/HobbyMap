@@ -10,14 +10,16 @@ import { toast } from 'react-toastify';
 import '../styles/HomePage.css';
 import CreateUserModal from '../Components/CreateUserModal';
 
-// Available hobbies
-const hobbies = ['Coding', 'Reading', 'Gaming', 'Painting', 'Cooking'];
+// Initial hobbies
+const initialHobbies = ['Coding', 'Reading', 'Gaming', 'Painting', 'Cooking'];
 
 const HomeComponent = () => {
     const [users, setUsers] = useState([]);
     const [nodes, setNodes] = useState([]);
     const [edges, setEdges] = useState([]);
-    const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+    const [hobbies, setHobbies] = useState(initialHobbies);
+    const [newHobby, setNewHobby] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Fetch users and initialize nodes
     useEffect(() => {
@@ -42,6 +44,30 @@ const HomeComponent = () => {
                 console.error(error);
             });
     }, []);
+
+    // Add a new hobby to the list
+    const handleAddHobby = () => {
+        if (!newHobby.trim()) {
+            toast.error('Hobby cannot be empty');
+            return;
+        }
+
+        if (hobbies.includes(newHobby.trim())) {
+            toast.info('Hobby already exists');
+            return;
+        }
+
+        setHobbies((prevHobbies) => [...prevHobbies, newHobby.trim()]);
+        toast.success(`Hobby "${newHobby.trim()}" added`);
+        setNewHobby('');
+    };
+
+    // Delete a hobby from the list
+    const handleDeleteHobby = (hobbyToDelete) => {
+        setHobbies((prevHobbies) => prevHobbies.filter((hobby) => hobby !== hobbyToDelete));
+        toast.success(`Hobby "${hobbyToDelete}" removed`);
+    };
+
 
     const handleUserCreated = (newUser) => {
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/hobbieuser`)
@@ -85,29 +111,40 @@ const HomeComponent = () => {
         event.dataTransfer.setData('hobby', hobby);
     };
 
+
     const handleDragOver = (event) => {
         event.preventDefault();
     };
 
     const handleDrop = (event, nodeId) => {
+        event.preventDefault(); // Prevent default browser behavior
         const hobby = event.dataTransfer.getData('hobby');
-        if (!hobby) return;
+
+        if (!hobby) {
+            toast.error('Invalid hobby!');
+            return;
+        }
 
         const user = users.find((u) => u._id === nodeId);
-        if (!user) return;
+        if (!user) {
+            toast.error('User not found!');
+            return;
+        }
 
         if (user.hobbies.includes(hobby)) {
-            toast.info('Hobby already added');
+            toast.info('Hobby already added to this user');
             return;
         }
 
         const updatedHobbies = [...user.hobbies, hobby];
 
+        // Update on backend
         axios
             .put(`${import.meta.env.VITE_BACKEND_URL}/api/hobbieuser/update/${nodeId}`, { hobbies: updatedHobbies })
             .then(() => {
                 toast.success(`Hobby "${hobby}" added to ${user.username}`);
 
+                // Update frontend state
                 setUsers((prevUsers) =>
                     prevUsers.map((u) =>
                         u._id === nodeId ? { ...u, hobbies: updatedHobbies } : u
@@ -127,12 +164,13 @@ const HomeComponent = () => {
             });
     };
 
+
     const CustomNodeComponent = ({ data, id }) => {
         return (
             <div
                 className="node"
-                onDragOver={handleDragOver}
-                onDrop={(e) => handleDrop(e, id)}
+                onDragOver={(e) => e.preventDefault()} // Allow drag events
+                onDrop={(e) => handleDrop(e, id)} // Handle drop event
             >
                 <h4>
                     {data.label}
@@ -153,21 +191,42 @@ const HomeComponent = () => {
         );
     };
 
+
     return (
         <div className="home-container">
             {/* Sidebar for hobbies */}
             <div className="hobbies-sidebar">
                 <h3>Hobbies</h3>
-                {hobbies.map((hobby, index) => (
-                    <div
-                        key={index}
-                        draggable
-                        onDragStart={(e) => handleDragStart(e, hobby)}
-                        className="hobby-item"
-                    >
-                        {hobby}
-                    </div>
-                ))}
+                <input
+                    type="text"
+                    placeholder="Add a new hobby"
+                    value={newHobby}
+                    onChange={(e) => setNewHobby(e.target.value)}
+                    className="hobby-input"
+                />
+                <button onClick={handleAddHobby} className="add-hobby-button">
+                    Add Hobby
+                </button>
+                <div className="hobbies-list">
+                    {hobbies.map((hobby, index) => (
+                        <div
+                            key={index}
+                            className="hobby-item"
+                            draggable
+                            onDragStart={(e) => handleDragStart(e, hobby)}
+                        >
+                            <span>{hobby}</span>
+                            <button
+                                onClick={() => handleDeleteHobby(hobby)}
+                                className="delete-hobby-button"
+                                title="Delete Hobby"
+                            >
+                                ✖
+                            </button>
+                        </div>
+                    ))}
+                </div>
+
                 <button onClick={() => setIsModalOpen(true)} className="add-user-button">
                     Add New User
                 </button>
