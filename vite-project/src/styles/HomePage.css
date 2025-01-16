@@ -1,0 +1,396 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main Container */
+.home-container {
+    display: flex;
+    height: 96vh;
+    padding: 20px;
+    background-color: #eef2f7;
+}
+
+/* Sidebar for Hobbies */
+.hobbies-sidebar {
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hobbies-sidebar h3 {
+    margin-bottom: 20px;
+    color: #333333;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.hobby-item {
+    margin-bottom: 15px;
+    padding: 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: grab;
+    width: 80%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.hobby-item:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* Add User Button */
+.add-user-button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 86%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.add-user-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* React Flow Container */
+.reactflow-container {
+    flex-grow: 1;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Node Styling */
+.node {
+    padding: 15px;
+    background-color: #fcfcfc !important;
+
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+    color: #333;
+    position: relative;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.node:hover {
+    transform: scale(1.03);
+    background-color: #ffffff !important;
+
+}
+
+.node h4 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #007bff;
+}
+
+.node ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.node li {
+    margin: 3px 0;
+    font-size: 0.6rem;
+    color: #555;
+}
+
+/* Delete User Button */
+.delete-user-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #dc3545;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(220, 53, 69, 0.4);
+    transition: background-color 0.3s ease;
+}
+
+.delete-user-button:hover {
+    background-color: #c82333;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.create-user-modal {
+    background: #ffffff;
+    border-radius: 12px;
+    width: 400px;
+    padding: 25px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333333;
+    font-weight: bold;
+}
+
+
+.node {
+    cursor: grab;
+    /* Indicate draggable */
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    width: 150px;
+}
+
+.node:active {
+    cursor: grabbing;
+    /* Change cursor during dragging */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Modal overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Ensure it's above other content */
+}
+
+/* Modal content */
+.create-user-modal {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    max-height: 80vh;
+    /* Prevents it from overflowing the screen */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modal title */
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Modal content (input fields, labels) */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.input-field {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-field:focus {
+    border-color: #007bff;
+}
+
+/* Hobby list and remove button */
+/* Hobby list container */
+.hobby-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+    max-height: 13rem;
+    overflow-y: auto;
+    /* Allow scrolling if content overflows */
+    scrollbar-width: thin;
+    /* For Firefox */
+    scrollbar-color: #00441083 #f1f1f1;
+    /* For Firefox */
+}
+
+/* Custom Scrollbar for Webkit Browsers (Chrome, Safari, Edge) */
+.hobby-list::-webkit-scrollbar {
+    width: 1px;
+    /* Width of the scrollbar */
+}
+
+.hobby-list::-webkit-scrollbar-thumb {
+    background-color: #28a745;
+    /* Color of the scrollbar thumb */
+    border-radius: 4px;
+    /* Rounded corners for the thumb */
+}
+
+.hobby-list::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Background of the scrollbar track */
+    border-radius: 4px;
+    /* Rounded corners for the track */
+}
+
+
+.hobby-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.remove-hobby-btn {
+    background: none;
+    border: none;
+    color: #d9534f;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Action buttons */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    transition: ease-in 1s !important;
+}
+
+.add-user-btn,
+.cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 48%;
+    /* Ensure buttons take equal width */
+}
+
+
+
+.add-user-btn,
+.cancel-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.add-user-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.add-user-btn:hover {
+    background-color: #218838;
+}
+
+.cancel-btn {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+.cancel-btn:hover {
+    background-color: #e2e6ea;
+}
+
+/* Close button for modal */
+.modal-content button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+}
+
+
+.add-user-btn {
+    background-color: #0ccf39cb !important;
+    color: white Im !important;
+}
+
+.add-user-btn:hover {
+    background-color: #218838 !important;
+}
+
+.cancel-btn {
+    background-color: #e6e6e6 !important;
+    color: #6c757d;
+}
+
+.cancel-btn:hover {
+    background-color: #e2e6ea;
+}

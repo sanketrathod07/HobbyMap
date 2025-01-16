@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Comforter&family=Gasoek+One&family=Oi&family=Sigmar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Belanosima&family=Rubik+Vinyl&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+
+
+.spectacledcoder-navbar {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    z-index: 100;
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    backdrop-filter: blur(20px);
+}
+
+.spectacledcoder-navbar .brand {
+    margin: auto;
+    width: fit-content;
+    height: 60px;
+    margin-left: 20px;
+    margin-top: 5px;
+    display: flex;
+
+}
+
+.spectacledcoder-navbar .brand h1 {
+    font-family: "Comforter", cursive;
+    margin: auto;
+    color: rgb(255, 255, 255);
+}
+
+.spectacledcoder-navbar ul {
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    margin-left: 0px;
+    display: flex;
+
+
+}
+
+.spectacledcoder-navbar ul li {
+    margin: auto;
+    margin-left: 0px;
+    list-style: none;
+    font-weight: 400;
+}
+
+.rect {
+    margin: auto;
+    margin-left: 0px;
+    width: 0%;
+    height: 2px;
+    background-color: rgb(255, 255, 255);
+}
+
+.spectacledcoder-navbar ul li:hover .rect {
+    width: 100%;
+    transition: all 0.5s;
+}
+
+.spectacledcoder-navbar ul li a {
+    font-family: "Poppins", sans-serif;
+    font-size: smaller;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.logoutHeaderli {
+    font-family: "Poppins", sans-serif;
+    font-size: smaller;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.spectacledcoder-navbar .navbar-toggler {
+    margin: auto;
+    width: 50px;
+    height: 40%;
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.5s;
+    margin-right: 20px;
+
+}
+
+.spectacledcoder-navbar .navbar-toggler .line1,
+.spectacledcoder-navbar .navbar-toggler .line2 {
+    margin: auto;
+    width: 20px;
+    height: 1px;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.overlay-dropdown {
+    display: none;
+}
+
+.overlay-dropdown ul li {
+    display: none;
+}
