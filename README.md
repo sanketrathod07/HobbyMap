@@ -3,7 +3,7 @@
 This project is a User Management System that allows you to manage users with hobbies dynamically on a flow-based interface.
 
 ## Full Demo Video
-[HobbyMap: User Hobbies Management System using React Flow](https://youtu.be/e5UBsOyRKl0)
+[![HobbyMap: User Hobbies Management System using React Flow](https://img.youtube.com/vi/e5UBsOyRKl0/0.jpg)](https://www.youtube.com/watch?v=e5UBsOyRKl0)
 
 ## 🚀 Deployment
 [Live Link ⭐](https://youtu.be/e5UBsOyRKl0)
