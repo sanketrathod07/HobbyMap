@@ -33,7 +33,7 @@ const Register = () => {
 
       toast.success("User registered successfully!");
 
-      console.log("User Registered Successfully: ", response.data);
+      // console.log("User Registered Successfully: ", response.data);
 
       // Navigate to /login after registration
       navigate("/login");

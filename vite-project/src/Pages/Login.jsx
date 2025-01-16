@@ -21,9 +21,6 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("form.username:", form.username);
-        console.log("form.password:", form.password);
-
 
         try {
             // API call to login
@@ -35,7 +32,7 @@ const Login = () => {
             toast.success("Logged In Successfully!")
 
             // Handle successful login
-            console.log("Login successful:", response.data);
+            // console.log("Login successful:", response.data);
 
             // Store token in localStorage or cookies if applicable
             localStorage.setItem("authToken", response.data.token);

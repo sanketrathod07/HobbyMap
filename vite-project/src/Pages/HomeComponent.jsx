@@ -21,7 +21,7 @@ const HomeComponent = () => {
 
     // Fetch users and initialize nodes
     useEffect(() => {
-        axios.get('http://localhost:5000/api/hobbieuser')
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/hobbieuser`)
             .then((response) => {
                 const fetchedUsers = response.data;
                 setUsers(fetchedUsers);
@@ -44,7 +44,7 @@ const HomeComponent = () => {
     }, []);
 
     const handleUserCreated = (newUser) => {
-        axios.get('http://localhost:5000/api/hobbieuser')
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/hobbieuser`)
             .then((response) => {
                 const fetchedUsers = response.data;
                 setUsers(fetchedUsers);
@@ -69,7 +69,7 @@ const HomeComponent = () => {
 
     const handleDeleteUser = (userId) => {
         axios
-            .delete(`http://localhost:5000/api/hobbieuser/delete/${userId}`)
+            .delete(`${import.meta.env.VITE_BACKEND_URL}/api/hobbieuser/delete/${userId}`)
             .then(() => {
                 toast.success('User deleted successfully');
                 setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
@@ -104,7 +104,7 @@ const HomeComponent = () => {
         const updatedHobbies = [...user.hobbies, hobby];
 
         axios
-            .put(`http://localhost:5000/api/hobbieuser/update/${nodeId}`, { hobbies: updatedHobbies })
+            .put(`${import.meta.env.VITE_BACKEND_URL}/api/hobbieuser/update/${nodeId}`, { hobbies: updatedHobbies })
             .then(() => {
                 toast.success(`Hobby "${hobby}" added to ${user.username}`);
 
